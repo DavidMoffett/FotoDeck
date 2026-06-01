@@ -1296,23 +1296,23 @@ function App() {
       setSavedCollections((currentCollections) => currentCollections.filter((item) => item.id !== collection.id))
       setSavedEvents((currentEvents) => currentEvents.filter((item) => item.collection_id !== collection.id))
 
-      if (activeCollectionId === collection.id) {
-        setActiveCollectionId('')
-        setActiveEventId('')
-        setCollectionName('FOTODECK')
-        setEventName('Event')
-        setPhotos([])
-        setVisiblePhotoCount(24)
-        setSelectedPhoto(null)
-        setCartItems([])
-        setBuyerEmail('')
-        setCartStatus('Cart is empty')
-        setLoadStatus('Deleted collection removed from current view')
-      }
+      setActiveCollectionId('')
+      setActiveEventId('')
+      setCollectionName('FOTODECK')
+      setEventName('Event')
+      setPhotos([])
+      setVisiblePhotoCount(24)
+      setSelectedPhoto(null)
+      setCartItems([])
+      setBuyerEmail('')
+      setCartStatus('Cart is empty')
+      setLoadStatus('Deleted collection removed from current view')
 
       if (editingCollectionId === collection.id) {
         clearCollectionEditState()
       }
+
+      await handleLoadSavedCollectionsEvents()
 
       setDeleteStatus(`Deleted collection ${collection.name || 'Collection'}`)
       setSavedStatus(`Deleted collection ${collection.name || 'Collection'}`)
